@@ -1,36 +1,21 @@
-﻿<?php
+<?php
 include('fonctions.php');
-
+include('includes/header.php');
+echo '<div class="well" align="center">';
 if(isset($_GET['ip']))
 {
-// INITIALISATION DES FONCTIONS
-
+echo '<h1>Résultat du scan</h1>';
 $host = gethostbyname($_GET['ip']);
-
-testServeurWeb($host);
-echo '<br />';
-testServeurSQL($host);
-echo '<br />';
-testServeurSSH($host);
-echo '<br />';
-testServeurFTP($host);
-echo '<br />';
-testServeurSMTP($host);
-echo '<br />';
-testServeurTS($host);
-echo '<br />';
-testServeurMinecraft($host);
+testServeur($host);
 }
-
-include('includes/header.php');
+else {
+echo '<h1>Entrez l\'adresse IP</h1>
+<p class="lead">Recherche basique ou specifique, netscanner est le plus pratique !</p>
+<form class="form-search" action="" method="GET">
+<input type="text" name="ip" class="input-medium"> <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Scanner</button>
+</form>';
+}
 ?>
-      <div class="well" align="center">
-        <h1>Entrez l'adresse IP</h1>
-        <p class="lead">Recherche basique ou specifique, netscanner est le plus pratique !</p>
-        <form class="form-search" action="" method="GET">
-			<input type="text" name="ip" class="input-medium"> <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i> Scanner</button>
-		</form>
-      </div>
-
-      <hr>
-	  <?php include('includes/footer.php'); ?>
+</div>
+<hr>
+<?php include('includes/footer.php'); ?>
